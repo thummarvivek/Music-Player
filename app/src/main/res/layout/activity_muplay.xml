@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/stabac"
+    tools:context=".Muplay">
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shepe"
+        android:elevation="10dp"
+        app:elevation="10dp"
+        app:expanded="true"
+        tools:ignore="MissingConstraints">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/tools"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shepe"
+            android:contentDescription="@string/app_name"
+            android:longClickable="true"
+            app:titleMargin="10dp"
+            app:titleTextColor="#F3F6FC" >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/protitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="5"
+                    android:fontFamily="@font/dancing_script"
+                    android:paddingTop="5dp"
+                    android:textStyle="bold"
+                    android:text="My music"
+                    android:textColor="@color/white"
+                    android:textSize="27dp"
+                    tools:ignore="RtlCompat" />
+
+
+            </LinearLayout>
+        </androidx.appcompat.widget.Toolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="?attr/actionBarSize"
+        android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginRight="50dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="20dp"
+            android:padding="20dp"
+            android:background="@drawable/aemecx"
+            android:layout_weight="1"
+            app:cardCornerRadius="20dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:id="@+id/bbmove"
+                        android:layout_width="match_parent"
+                        android:layout_height="300dp"
+                        android:scaleType="fitXY"
+                        app:srcCompat="@drawable/aemecx" />
+
+                    <ImageView
+                        android:id="@+id/bbroim"
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        android:layout_marginLeft="-20dp"
+                        android:layout_marginTop="-10dp"
+                        android:layout_gravity="center"
+                        app:srcCompat="@drawable/aaemecxx" />
+
+                </FrameLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="#BCC2C6">
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="50"
+                    android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/mmove"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/dancing_script"
+                    android:paddingTop="5dp"
+                    android:textStyle="bold"
+                    android:text="My music"
+                    android:textColor="@color/Darkpink"
+                    android:textSize="26dp"
+                    tools:ignore="RtlCompat" />
+
+                    <TextView
+                        android:id="@+id/mnbmove"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/dancing_script"
+                        android:paddingTop="5dp"
+                        android:padding="5dp"
+                        android:textStyle="bold"
+                        android:text="Unknown Album"
+                        android:textColor="@color/gray"
+                        android:textSize="14dp"
+                        tools:ignore="RtlCompat" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/mvmove"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:fontFamily="@font/dancing_script"
+                    android:padding="10dp"
+                    android:layout_weight="1"
+                    android:textStyle="bold"
+                    android:drawableRight="@drawable/sfgstar"
+                    android:textColor="@color/black"
+                    android:textSize="33dp"
+                    tools:ignore="RtlCompat" />
+
+
+
+
+
+            </LinearLayout>
+
+
+
+                  </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+
+
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
