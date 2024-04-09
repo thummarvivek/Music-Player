@@ -1,5 +1,7 @@
 package com.mymusic.musicplayer;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -7,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
@@ -30,10 +33,15 @@ public class Homepage extends AppCompatActivity {
         setContentView(R.layout.activity_homepage);
         recyclerView =findViewById(R.id.recycler);
 
-        if (checkPermission() == false){
-           requestPermission();
-            return;
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            if (checkPermission() == false){
+                requestPermission();
+                otherequestPermission();
+                return;
+            }
         }
+
         String[] projection ={
                 MediaStore.Audio.Media.TITLE,
                 MediaStore.Audio.Media.DATA,
@@ -63,20 +71,33 @@ public class Homepage extends AppCompatActivity {
 
 
 
-    boolean checkPermission(){
-        int result = ContextCompat.checkSelfPermission(Homepage.this, Manifest.permission.READ_EXTERNAL_STORAGE);
-        if(result == PackageManager.PERMISSION_GRANTED){
-            return true;
-        }else{
-            return false;
+    @RequiresApi(api = Build.VERSION_CODES.TIRAMISU)
+    boolean checkPermission() {
+
+
+
+        int resultReadStorage = ContextCompat.checkSelfPermission(Homepage.this, Manifest.permission.READ_MEDIA_AUDIO);
+        int resultReadAudio = ContextCompat.checkSelfPermission(Homepage.this, Manifest.permission.READ_MEDIA_AUDIO);
+
+        if (resultReadStorage == PackageManager.PERMISSION_GRANTED && resultReadAudio == PackageManager.PERMISSION_GRANTED) {
+            return true; // Both permissions granted
+        } else if (resultReadStorage == PackageManager.PERMISSION_GRANTED) {
+            Toast.makeText(this, "READ_MEDIA_AUDIO Permission Denied", Toast.LENGTH_SHORT).show();
+        } else if (resultReadAudio == PackageManager.PERMISSION_GRANTED) {
+            Toast.makeText(this, "READ_EXTERNAL_STORAGE Permission Denied", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(this, "Permissions Denied", Toast.LENGTH_SHORT).show();
         }
+        return false; // Permission(s) denied
     }
-   public void requestPermission(){
-        otherequestPermission();
-        if(ActivityCompat.shouldShowRequestPermissionRationale(Homepage.this,Manifest.permission.READ_EXTERNAL_STORAGE)){
+
+    public void requestPermission(){
+
+
+        if(ActivityCompat.shouldShowRequestPermissionRationale(Homepage.this,Manifest.permission.READ_MEDIA_AUDIO)){
             Toast.makeText(Homepage.this,"READ PERMISSION IS REQUIRED,PLEASE ALLOW FROM SETTINGS",Toast.LENGTH_SHORT).show();
         }else
-            ActivityCompat.requestPermissions(Homepage.this,new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},123);
+            ActivityCompat.requestPermissions(Homepage.this,new String[]{Manifest.permission.READ_MEDIA_AUDIO},123);
     }
 
     @Override
@@ -86,6 +107,7 @@ public class Homepage extends AppCompatActivity {
             recyclerView.setAdapter(new MusicListAdapter(songslist,getApplicationContext()));
         }
     }
+    @SuppressLint("InlinedApi")
     public void otherequestPermission(){
         if(ActivityCompat.shouldShowRequestPermissionRationale(Homepage.this,Manifest.permission.READ_MEDIA_AUDIO)){
             Toast.makeText(Homepage.this,"READ PERMISSION IS REQUIRED,PLEASE ALLOW FROM SETTINGS",Toast.LENGTH_SHORT).show();

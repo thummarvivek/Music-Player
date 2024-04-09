@@ -14,7 +14,7 @@ import android.widget.TextView;
 public class Eoption extends AppCompatActivity {
 
     TextView songname;
-    CardView ca0001,ca0002,ca0006,ca0007;
+    CardView ca0001,ca0002,ca0006,ca0007 ;
 
     public Musicpage musicpage;
     ImageView soimg;
@@ -43,6 +43,7 @@ public class Eoption extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(Eoption.this,Homepage.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -51,12 +52,16 @@ public class Eoption extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(Eoption.this,Light.class);
                 startActivity(intent);
+                finish();
             }
         });
 
         ca0006.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Intent intent =new Intent(Eoption.this,Close_App.class);
+                startActivity(intent);
+                finish();
 
 
 
@@ -70,6 +75,7 @@ public class Eoption extends AppCompatActivity {
                 intent.setAction("android.media.action.DISPLAY_AUDIO_EFFECT_CONTROL_PANEL");
                 intent.resolveActivity(getPackageManager());
                     startActivity(intent);
+                    finish();
             }
         });
 
